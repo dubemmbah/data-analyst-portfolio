@@ -57,3 +57,21 @@ FROM PlayerIndex_nba_stats
 WHERE DRAFT_YEAR IS NOT NULL
 GROUP BY DRAFT_YEAR
 ORDER BY DraftedPlayers DESC;
+
+-- PLAYERS WHO AVERAGED 20+ POINTS
+SELECT PLAYER_FIRST_NAME + ' ' + PLAYER_LAST_NAME AS Player, PTS AS Points
+FROM PlayerIndex_nba_stats
+WHERE PTS >= 20
+ORDER BY PTS DESC;
+
+-- HEIGHT DISTRIBUTION (500 players are 6ft 7inches tall which is the most common height)
+SELECT HEIGHT, COUNT(*) AS CountByHeight
+FROM PlayerIndex_nba_stats
+GROUP BY HEIGHT
+ORDER BY CountByHeight DESC;
+
+-- NUMBER OF PLAYERS BY POSITION
+SELECT POSITION, COUNT(*) AS PlayerCount
+FROM PlayerIndex_nba_stats
+GROUP BY POSITION
+ORDER BY PlayerCount DESC;
